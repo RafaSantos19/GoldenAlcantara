@@ -1,0 +1,130 @@
+.breeds-eyebrow,
+.breed-card__eyebrow {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.breeds-hero,
+.breeds-section {
+  padding: 5rem 0;
+}
+
+.breeds-hero__content,
+.breeds-section__heading {
+  max-width: 44rem;
+}
+
+.breeds-hero__lead {
+  font-size: 1.08rem;
+  color: var(--color-text);
+}
+
+.breeds-section__heading h2,
+.breed-card__content h3 {
+  margin-bottom: 1rem;
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.breeds-section__heading h2 {
+  font-size: clamp(1.95rem, 4vw, 3rem);
+}
+
+.breeds-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.breed-card {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 1.75rem;
+  background: rgba(253, 248, 239, 0.78);
+  box-shadow: var(--shadow-raised);
+}
+
+.breed-card__media img {
+  width: 100%;
+  height: clamp(18rem, 34vw, 24rem);
+  object-fit: cover;
+}
+
+.breed-card__content {
+  padding: 1.5rem;
+}
+
+.breed-card__content h3 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.breed-card__content p {
+  margin-bottom: 1.25rem;
+}
+
+.breed-card__traits {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  list-style: none;
+}
+
+.breed-card__traits li {
+  padding-left: 1rem;
+  position: relative;
+  color: var(--color-text-muted);
+}
+
+.breed-card__traits li::before {
+  content: "";
+  position: absolute;
+  top: 0.65rem;
+  left: 0;
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.breed-card__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.82rem 1.15rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.4);
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.breed-card__cta:hover {
+  transform: translateY(-2px);
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  border-color: transparent;
+}
+
+@media (max-width: 920px) {
+  .breeds-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .breed-card__content {
+    padding: 1.25rem;
+  }
+
+  .breed-card__cta {
+    width: 100%;
+    text-align: center;
+  }
+}

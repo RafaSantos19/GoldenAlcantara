@@ -1,0 +1,55 @@
+.site-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at top, rgba(245, 190, 70, 0.14), transparent 32%),
+    linear-gradient(180deg, var(--color-surface) 0%, var(--color-background) 100%);
+}
+
+.site-main {
+  flex: 1;
+}
+
+.floating-whatsapp {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.9rem;
+  height: 3.9rem;
+  max-width: calc(100vw - 2rem);
+  max-height: calc(100vh - 2rem);
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  box-shadow: var(--shadow-raised);
+  z-index: 20;
+}
+
+.floating-whatsapp svg {
+  width: 1.9rem;
+  height: 1.9rem;
+  fill: currentColor;
+}
+
+.floating-whatsapp:hover {
+  transform: translateY(-2px);
+  background: var(--color-accent-strong);
+}
+
+@media (max-width: 720px) {
+  .floating-whatsapp {
+    right: max(0.75rem, env(safe-area-inset-right));
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+
+  .floating-whatsapp svg {
+    width: 1.65rem;
+    height: 1.65rem;
+  }
+}
