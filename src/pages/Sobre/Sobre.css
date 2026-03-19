@@ -1,12 +1,3 @@
-.about-eyebrow {
-  display: inline-block;
-  margin-bottom: 1rem;
-  font-size: 0.82rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
 .about-hero,
 .about-section,
 .about-cta {
@@ -22,7 +13,13 @@
 }
 
 .about-hero__intro {
-  max-width: 28rem;
+  max-width: 38rem;
+}
+
+.about-hero__intro h1 {
+  max-width: 13ch;
+  line-height: 1.05;
+  text-wrap: balance;
 }
 
 .about-hero__statement {
@@ -287,5 +284,16 @@
   .about-hero__media img,
   .about-story__media img {
     height: clamp(18rem, 62vw, 26rem);
+  }
+
+  .about-hero__intro,
+  .about-hero__intro h1 {
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-hero__intro h1 {
+    line-height: 1.08;
   }
 }

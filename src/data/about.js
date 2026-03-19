@@ -1,37 +1,78 @@
 const about = {
-  whoWeAre: {
+  hero: {
     eyebrow: "Quem somos",
-    title: "Canil Golden Alcantara",
+    title: "Um canil dedicado à criação responsável de Golden Retrievers",
     highlight:
-      "Criamos Golden Retrievers com responsabilidade, cuidado e dedicação para que cada filhote encontre uma família preparada para recebê-lo.",
+      "Nosso trabalho é baseado em cuidado, estrutura adequada e atenção ao desenvolvimento saudável de cada filhote.",
     intro:
-      "O Golden Alcantara nasceu da paixão pela raça e do compromisso com uma criação responsável. Nosso foco é oferecer um ambiente seguro, saudável e equilibrado para o desenvolvimento de cada filhote."
+      "O Canil Aurora Gold nasceu com a proposta de oferecer um ambiente seguro, organizado e preparado para o bem-estar dos cães em todas as etapas.",
+    quote: {
+      title: "Nosso olhar",
+      description:
+        "Criar com responsabilidade significa cuidar da estrutura, da rotina e da relação de confiança com cada família."
+    }
   },
 
-  aboutUs: {
-    eyebrow: "Sobre o canil",
-    title: "Estrutura pensada para cuidado e bem-estar",
+  highlights: [
+    {
+      label: "Estrutura",
+      value: "Planejada"
+    },
+    {
+      label: "Foco diário",
+      value: "Bem-estar"
+    },
+    {
+      label: "Atendimento",
+      value: "Próximo"
+    }
+  ],
+
+  structure: {
+    eyebrow: "Nossa estrutura",
+    title: "Espaço pensado para cuidado e bem-estar",
     paragraphs: [
-      "O Canil Golden Alcantara conta com aproximadamente 500 metros quadrados preparados para oferecer conforto, espaço e segurança aos nossos cães.",
-      "Mantemos um ambiente limpo, organizado e planejado para que os Golden Retrievers possam viver, brincar e se desenvolver de forma saudável.",
-      "Nossa maternidade foi projetada para garantir tranquilidade e segurança às mães durante o período de gestação e aos filhotes nos primeiros dias de vida.",
-      "Cada filhote recebe atenção constante, alimentação adequada e acompanhamento cuidadoso para garantir um crescimento saudável.",
-      "Também estimulamos a socialização e o desenvolvimento comportamental, permitindo que os filhotes explorem o ambiente, brinquem e interajam."
-    ],
-    closing:
-      "Nosso objetivo é simples: criar Golden Retrievers saudáveis, equilibrados e prontos para levar alegria e companheirismo às famílias."
+      "Contamos com uma estrutura planejada para oferecer conforto, segurança e rotina adequada aos cães.",
+      "Mantemos um ambiente limpo, organizado e preparado para apoiar o desenvolvimento saudável dos filhotes.",
+      "A área de maternidade foi pensada para oferecer tranquilidade às mães e proteção aos filhotes nos primeiros dias de vida."
+    ]
+  },
+
+  care: {
+    eyebrow: "Nosso cuidado",
+    title: "Atenção em cada etapa do desenvolvimento",
+    paragraphs: [
+      "Cada filhote recebe acompanhamento próximo, alimentação adequada e atenção constante.",
+      "Também incentivamos a socialização e o contato com o ambiente para estimular um desenvolvimento mais equilibrado.",
+      "Nosso foco é garantir que cada filhote cresça de forma saudável e bem assistida."
+    ]
   },
 
   mission: {
     eyebrow: "Nossa missão",
-    title: "Criar Golden Retrievers preparados para fazer parte da sua família",
+    title: "Criar com responsabilidade e transparência",
     summary:
-      "Nosso propósito é conectar famílias a Golden Retrievers criados com responsabilidade e cuidado.",
+      "Acreditamos que responsabilidade, cuidado e orientação fazem parte de todo o processo.",
     paragraphs: [
-      "Acreditamos que um cão não é apenas um animal de estimação, mas um companheiro para a vida toda.",
-      "Por isso, cada filhote recebe atenção, carinho e acompanhamento desde o nascimento.",
-      "Também buscamos orientar cada família com transparência e suporte, para que a chegada do novo companheiro seja tranquila e segura."
+      "Mais do que apresentar filhotes, buscamos mostrar um trabalho sério e comprometido com o bem-estar animal.",
+      "Valorizamos transparência no contato com cada família e atenção aos detalhes em toda a criação.",
+      "Nosso objetivo é manter um padrão de cuidado que reflita segurança e confiança."
     ]
+  },
+
+  cta: {
+    eyebrow: "Fale conosco",
+    title: "Quer conhecer melhor nossa estrutura e nosso trabalho?",
+    description:
+      "Entre em contato para esclarecer dúvidas e entender melhor como funciona nosso atendimento.",
+    primaryButton: {
+      label: "Chamar no WhatsApp",
+      href: "whatsapp"
+    },
+    secondaryButton: {
+      label: "Ir para contato",
+      path: "/contato"
+    }
   }
 }
 

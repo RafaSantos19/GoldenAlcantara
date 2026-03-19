@@ -1,10 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=swap");
+
 .site-header {
   position: sticky;
   top: 0;
   z-index: 30;
   padding: 1rem 0;
   backdrop-filter: blur(18px);
-  background: rgba(56, 36, 23, 0.86);
+  background: rgba(47, 93, 98, 0.9);
   border-bottom: 1px solid var(--color-on-dark-border);
 }
 
@@ -17,10 +19,25 @@
 
 .site-header__brand {
   display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+  align-items: center;
+  gap: 1rem;
   color: var(--color-on-dark);
   min-width: 0;
+}
+
+.site-header__brand-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.site-header__logo,
+.site-mobile-menu__logo {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: contain;
+  flex: 0 0 auto;
 }
 
 .site-header__eyebrow,
@@ -32,9 +49,12 @@
 }
 
 .site-header__brand strong {
-  font-size: 1.05rem;
+  font-family: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", serif;
+  font-size: 1.65rem;
+  font-weight: 700;
   line-height: 1;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.05em;
+  text-transform: none;
 }
 
 .site-header__nav {
@@ -46,7 +66,7 @@
   margin: 0 auto;
   border: 1px solid var(--color-on-dark-border);
   border-radius: 999px;
-  background: rgba(255, 248, 240, 0.08);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
 }
 
@@ -60,7 +80,7 @@
 .site-header__link:hover,
 .site-header__link.is-active {
   color: var(--color-on-dark);
-  background: rgba(255, 248, 240, 0.12);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .site-header__actions {
@@ -96,7 +116,7 @@
   padding: 0;
   border-radius: 12px;
   border: 1px solid var(--color-on-dark-border);
-  background: rgba(255, 248, 240, 0.08);
+  background: rgba(255, 255, 255, 0.08);
   color: var(--color-on-dark);
   font-size: 1.15rem;
 }
@@ -127,7 +147,7 @@
   padding: 1.4rem;
   display: flex;
   flex-direction: column;
-  background: #3c281b;
+  background: var(--color-forest);
   border-left: 1px solid var(--color-on-dark-border);
   box-shadow: var(--shadow-raised);
   transform: translateX(100%);
@@ -148,11 +168,21 @@
   border-bottom: 1px solid var(--color-on-dark-border);
 }
 
+.site-mobile-menu__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
 .site-mobile-menu__header strong {
   display: block;
   margin-top: 0.3rem;
   color: var(--color-on-dark);
-  font-size: 1rem;
+  font-family: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
 .site-mobile-menu__nav {
@@ -170,7 +200,7 @@
 .site-mobile-menu__link:hover,
 .site-mobile-menu__link.is-active {
   color: var(--color-on-dark);
-  background: rgba(255, 248, 240, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   transform: translateX(4px);
 }
 
@@ -204,5 +234,30 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .site-header__logo {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header__brand {
+    gap: 0.75rem;
+  }
+
+  .site-header__eyebrow {
+    display: none;
+  }
+
+  .site-header__brand strong {
+    max-width: 11rem;
+    font-size: 1.42rem;
+  }
+
+  .site-mobile-menu__logo {
+    width: 3rem;
+    height: 3rem;
   }
 }

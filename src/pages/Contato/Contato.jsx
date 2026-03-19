@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 
 import contact from "../../data/contact"
+import site from "../../data/site"
 import formatPhone from "../../utils/formatPhone"
 import "./Contato.css"
 
@@ -17,70 +18,41 @@ const socialIcons = {
   )
 }
 
-const channels = [
-  {
-    id: "whatsapp",
-    label: "WhatsApp",
-    value: formatPhone(contact.phone),
-    description: "O jeito mais rápido de tirar dúvidas e saber sobre disponibilidade.",
-    href: `https://wa.me/${contact.whatsapp}`,
-    action: "Chamar no WhatsApp",
-    external: true,
-    featured: true
-  },
-  {
-    id: "phone",
-    label: "Telefone",
-    value: formatPhone(contact.phone),
-    description: "Para falar diretamente com o canil.",
-    href: `tel:${contact.phone.replace(/\D/g, "")}`,
-    action: "Ligar agora"
-  },
-  {
-    id: "email",
-    label: "E-mail",
-    value: contact.email,
-    description: "Para informações mais detalhadas.",
-    href: `mailto:${contact.email}`,
-    action: "Enviar e-mail"
-  },
-  {
-    id: "address",
-    label: "Endereço",
-    value: contact.address,
-    description: "Atendimento com visita combinada previamente.",
-    href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`,
-    action: "Abrir no mapa",
-    external: true
-  }
-]
+const addressText = contact.address.full
+const phoneDigits = contact.phone.replace(/\D/g, "")
 
-const steps = [
-  "Entre em contato pelo WhatsApp ou telefone.",
-  "Receba informações sobre filhotes, atendimento e visita.",
-  "Se fizer sentido, alinhamos os próximos passos com você."
-]
+const mapsSearchHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressText)}`
+const mapsEmbedSrc = `https://maps.google.com/maps?q=${encodeURIComponent(addressText)}&t=&z=15&ie=UTF8&iwloc=&output=embed`
 
-const mapsSearchHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`
-const mapsEmbedSrc = `https://maps.google.com/maps?q=${encodeURIComponent(contact.address)}&t=&z=15&ie=UTF8&iwloc=&output=embed`
+function getChannelValue(source) {
+  if (source === "phone") return formatPhone(contact.phone)
+  if (source === "email") return contact.email
+  if (source === "address") return addressText
+  return ""
+}
+
+function getChannelHref(source) {
+  if (source === "whatsapp") return `https://wa.me/${contact.whatsapp}`
+  if (source === "phone") return `tel:${phoneDigits}`
+  if (source === "email") return `mailto:${contact.email}`
+  if (source === "address") return mapsSearchHref
+  return "#"
+}
 
 export default function Contato() {
   return (
     <>
       <section className="contact-hero">
         <div className="container contact-hero__content">
-          <span className="contact-eyebrow">Contato</span>
-          <h1>Fale com o Canil Golden Alcantara</h1>
-          <p className="contact-hero__lead">
-            Tire dúvidas, consulte disponibilidade e combine seu atendimento de forma rápida e
-            direta.
-          </p>
+          <span className="contact-eyebrow">{contact.page.hero.eyebrow}</span>
+          <h1>{contact.page.hero.title}</h1>
+          <p className="contact-hero__lead">{contact.page.hero.description}</p>
 
           <div className="contact-hero__actions">
             <a href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noreferrer">
-              Chamar no WhatsApp
+              {contact.page.hero.primaryButtonLabel}
             </a>
-            <a href={`tel:${contact.phone.replace(/\D/g, "")}`}>Ligar agora</a>
+            <a href={`tel:${phoneDigits}`}>{contact.page.hero.secondaryButtonLabel}</a>
           </div>
         </div>
       </section>
@@ -93,18 +65,18 @@ export default function Contato() {
           </div>
 
           <div className="contact-cards">
-            {channels.map((channel) => (
+            {contact.page.channels.map((channel) => (
               <article
                 key={channel.id}
                 className={`contact-card ${channel.featured ? "contact-card--featured" : ""}`}
               >
                 <span>{channel.label}</span>
-                <strong>{channel.value}</strong>
+                <strong>{getChannelValue(channel.valueSource)}</strong>
                 <p>{channel.description}</p>
                 <a
-                  href={channel.href}
-                  target={channel.external ? "_blank" : undefined}
-                  rel={channel.external ? "noreferrer" : undefined}
+                  href={getChannelHref(channel.hrefSource)}
+                  target={channel.hrefSource === "whatsapp" || channel.hrefSource === "address" ? "_blank" : undefined}
+                  rel={channel.hrefSource === "whatsapp" || channel.hrefSource === "address" ? "noreferrer" : undefined}
                 >
                   {channel.action}
                 </a>
@@ -117,20 +89,16 @@ export default function Contato() {
       <section className="contact-section contact-section--soft">
         <div className="container contact-info">
           <div className="contact-note">
-            <span className="contact-note__label">Antes da visita</span>
-            <h2>Combine seu atendimento com antecedência</h2>
-            <p>
-              Recomendamos entrar em contato antes de ir ao canil. Assim conseguimos organizar o
-              melhor momento para receber você e apresentar nossa estrutura com calma.
-            </p>
+            <span className="contact-note__label">{contact.page.visitNote.eyebrow}</span>
+            <h2>{contact.page.visitNote.title}</h2>
+            <p>{contact.page.visitNote.description}</p>
+            <p className="contact-note__hours">{contact.businessHours.join(" | ")}</p>
           </div>
 
           <div className="contact-socials">
-            <span className="contact-note__label">Redes sociais</span>
-            <h2>Acompanhe o dia a dia do canil</h2>
-            <p>
-              Você também pode conhecer mais do nosso trabalho e falar com a gente pelas redes.
-            </p>
+            <span className="contact-note__label">{contact.page.socials.eyebrow}</span>
+            <h2>{contact.page.socials.title}</h2>
+            <p>{contact.page.socials.description}</p>
 
             <div className="contact-socials__list">
               {contact.socialLinks.map((social) => (
@@ -153,20 +121,17 @@ export default function Contato() {
       <section className="contact-section">
         <div className="container contact-map">
           <div className="contact-map__content">
-            <span className="contact-eyebrow">Mapa</span>
-            <h2>Veja onde o canil esta localizado</h2>
-            <p>
-              Use o mapa para ter uma referencia rapida da regiao. Para visitas, o ideal continua
-              sendo combinar o atendimento antes.
-            </p>
+            <span className="contact-eyebrow">{contact.page.map.eyebrow}</span>
+            <h2>{contact.page.map.title}</h2>
+            <p>{contact.page.map.description}</p>
             <a href={mapsSearchHref} target="_blank" rel="noreferrer">
-              Abrir no Google Maps
+              {contact.page.map.action}
             </a>
           </div>
 
           <div className="contact-map__frame">
             <iframe
-              title="Mapa com a localizacao do Canil Golden Alcantara"
+              title={`Mapa com a localização de ${site.brand.name}`}
               src={mapsEmbedSrc}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -178,12 +143,12 @@ export default function Contato() {
       <section className="contact-section">
         <div className="container contact-process">
           <div className="contact-section__heading">
-            <span className="contact-eyebrow">Como funciona</span>
-            <h2>Um contato simples e direto</h2>
+            <span className="contact-eyebrow">{contact.page.process.eyebrow}</span>
+            <h2>{contact.page.process.title}</h2>
           </div>
 
           <div className="contact-process__list">
-            {steps.map((step, index) => (
+            {contact.page.process.steps.map((step, index) => (
               <article key={step} className="contact-process__item">
                 <span>0{index + 1}</span>
                 <p>{step}</p>
@@ -196,16 +161,18 @@ export default function Contato() {
       <section className="contact-cta">
         <div className="container contact-cta__inner">
           <div>
-            <span className="contact-eyebrow">Próximo passo</span>
-            <h2>Quer agilizar o atendimento?</h2>
-            <p>Fale com a gente pelo WhatsApp e receba as orientações iniciais rapidamente.</p>
+            <span className="contact-eyebrow">{contact.page.cta.eyebrow}</span>
+            <h2>{contact.page.cta.title}</h2>
+            <p>{contact.page.cta.description}</p>
           </div>
 
           <div className="contact-cta__actions">
             <a href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noreferrer">
-              Falar no WhatsApp
+              {contact.page.cta.primaryButtonLabel}
             </a>
-            <Link to="/sobre">Conhecer o canil</Link>
+            <Link to={contact.page.cta.secondaryButton.path}>
+              {contact.page.cta.secondaryButton.label}
+            </Link>
           </div>
         </div>
       </section>

@@ -1,35 +1,20 @@
 import contact from "../../data/contact"
 import puppies from "../../data/puppies"
+import site from "../../data/site"
 import "./Filhotes.css"
 
-const breeds = [
-  {
-    id: "golden",
-    name: "Golden Retriever",
-    image: puppies[0]?.image,
-    summary: "Uma raça companheira, afetuosa e muito procurada por famílias.",
-    traits: ["Temperamento dócil", "Boa adaptação em família", "Perfil sociável e inteligente"]
-  },
-  {
-    id: "boiadeiro",
-    name: "Boiadeiro de Berna",
-    image: puppies[1]?.image,
-    summary: "Uma raça forte, equilibrada e leal, com presença marcante no convívio diário.",
-    traits: ["Porte robusto", "Personalidade calma", "Companheiro atento e fiel"]
-  }
-]
-
 export default function Filhotes() {
+  const featuredPuppy = puppies[0]
+
   return (
     <>
       <section className="breeds-hero">
         <div className="container breeds-hero__content">
-          <span className="breeds-eyebrow">Nossas racas</span>
-          <h1>Conheca as racas criadas no canil</h1>
+          <span className="breeds-eyebrow">Filhotes</span>
+          <h1>Conheça a raça criada por {site.brand.name}</h1>
           <p className="breeds-hero__lead">
-            Trabalhamos com duas racas de perfis muito queridos: o Golden Retriever e o
-            Boiadeiro de Berna. Aqui voce encontra uma apresentacao rapida de cada uma antes de
-            falar com a gente.
+            Aqui você encontra uma apresentação mais clara sobre o Golden Retriever e pode falar
+            com o canil para consultar disponibilidade e atendimento.
           </p>
         </div>
       </section>
@@ -37,39 +22,48 @@ export default function Filhotes() {
       <section className="breeds-section">
         <div className="container">
           <div className="breeds-section__heading">
-            <span className="breeds-eyebrow">Apresentacao</span>
-            <h2>Dois perfis diferentes, o mesmo cuidado na criacao</h2>
+            <span className="breeds-eyebrow">Raça em destaque</span>
+            <h2>Mais contexto para entender o perfil do Golden Retriever</h2>
           </div>
 
           <div className="breeds-grid">
-            {breeds.map((breed) => (
-              <article key={breed.id} className="breed-card">
-                <div className="breed-card__media">
-                  <img src={breed.image} alt={`${breed.name} em destaque`} />
+            <article key={featuredPuppy.id} className="breed-card">
+              <div className="breed-card__media">
+                <img src={featuredPuppy.image} alt={`${featuredPuppy.name} em destaque`} />
+              </div>
+
+              <div className="breed-card__content">
+                <div className="breed-card__meta">
+                  <span className="breed-card__eyebrow">{featuredPuppy.age}</span>
+                  <span className="breed-card__availability">{featuredPuppy.availability}</span>
                 </div>
 
-                <div className="breed-card__content">
-                  <span className="breed-card__eyebrow">Raca criada no canil</span>
-                  <h3>{breed.name}</h3>
-                  <p>{breed.summary}</p>
+                <h3>{featuredPuppy.breed}</h3>
+                <p>{featuredPuppy.description}</p>
+                <p>{featuredPuppy.breedSummary}</p>
 
-                  <ul className="breed-card__traits">
-                    {breed.traits.map((trait) => (
-                      <li key={trait}>{trait}</li>
-                    ))}
-                  </ul>
+                <ul className="breed-card__traits">
+                  {featuredPuppy.breedHighlights.map((trait) => (
+                    <li key={trait}>{trait}</li>
+                  ))}
+                </ul>
 
-                  <a
-                    className="breed-card__cta"
-                    href={`https://wa.me/${contact.whatsapp}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Falar sobre {breed.name}
-                  </a>
+                <div className="breed-card__tags">
+                  {featuredPuppy.tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
                 </div>
-              </article>
-            ))}
+
+                <a
+                  className="breed-card__cta"
+                  href={`https://wa.me/${contact.whatsapp}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Falar sobre {featuredPuppy.breed}
+                </a>
+              </div>
+            </article>
           </div>
         </div>
       </section>

@@ -33,18 +33,15 @@ const icons = {
 
 export default function Footer() {
   const phoneHref = `tel:${contact.phone.replace(/\D/g, "")}`
-  const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`
+  const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address.full)}`
 
   return (
     <footer className="site-footer">
       <div className="container site-footer__inner">
         <div className="site-footer__column">
-          <p className="site-footer__kicker">Canil Golden Alcantara</p>
-          <p className="site-footer__title">{site.brand}</p>
-          <p className="site-footer__text">
-            Criacao responsavel, atendimento proximo e uma apresentacao clara para familias que
-            buscam um Golden Retriever com confianca.
-          </p>
+          <p className="site-footer__kicker">{site.brand.logoText}</p>
+          <p className="site-footer__title">{site.brand.name}</p>
+          <p className="site-footer__text">{site.brand.tagline}</p>
         </div>
 
         <div className="site-footer__column">
@@ -59,7 +56,7 @@ export default function Footer() {
           </a>
           <a className="site-footer__contact" href={mapsHref} target="_blank" rel="noreferrer">
             <span className="site-footer__icon">{icons.location}</span>
-            <span>{contact.address}</span>
+            <span>{contact.address.full}</span>
           </a>
         </div>
 

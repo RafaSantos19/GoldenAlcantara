@@ -2,24 +2,9 @@ import { Link } from "react-router-dom"
 
 import about from "../../data/about"
 import contact from "../../data/contact"
-import aboutHero from "../../assets/images/about/golden_tarde.jpg"
-import ownerImage from "../../assets/images/about/dono_chapeu.jpg"
+import aboutHeroImage from "../../assets/images/sobre_hero1.jpeg"
+import aboutStoryImage from "../../assets/images/sobre_hero2.jpeg"
 import "./Sobre.css"
-
-const highlights = [
-  {
-    label: "Espaco preparado",
-    value: "500m²"
-  },
-  {
-    label: "Foco diario",
-    value: "Bem-estar"
-  },
-  {
-    label: "Atendimento",
-    value: "Proximo"
-  }
-]
 
 export default function Sobre() {
   return (
@@ -28,27 +13,24 @@ export default function Sobre() {
         <div className="container">
           <div className="about-hero__panel">
             <div className="about-hero__intro">
-              <span className="about-eyebrow">{about.whoWeAre.eyebrow}</span>
-              <h1>{about.whoWeAre.title}</h1>
+              <span className="about-eyebrow">{about.hero.eyebrow}</span>
+              <h1>{about.hero.title}</h1>
             </div>
 
             <div className="about-hero__statement">
-              <p className="about-hero__highlight">{about.whoWeAre.highlight}</p>
-              <p>{about.whoWeAre.intro}</p>
+              <p className="about-hero__highlight">{about.hero.highlight}</p>
+              <p>{about.hero.intro}</p>
             </div>
           </div>
 
           <div className="about-hero__media-wrap">
             <div className="about-hero__media">
-              <img src={aboutHero} alt="Área externa do Canil Golden Alcantara" />
+              <img src={aboutHeroImage} alt="Área externa do canil" />
             </div>
 
             <aside className="about-hero__quote">
-              <strong>Nosso olhar</strong>
-              <p>
-                Criar com responsabilidade significa cuidar da estrutura, da rotina e da relação
-                de confiança com cada família.
-              </p>
+              <strong>{about.hero.quote.title}</strong>
+              <p>{about.hero.quote.description}</p>
             </aside>
           </div>
         </div>
@@ -56,7 +38,7 @@ export default function Sobre() {
 
       <section className="about-band">
         <div className="container about-band__grid">
-          {highlights.map((item) => (
+          {about.highlights.map((item) => (
             <article key={item.label} className="about-band__item">
               <span>{item.label}</span>
               <strong>{item.value}</strong>
@@ -68,32 +50,29 @@ export default function Sobre() {
       <section className="about-section about-section--story">
         <div className="container about-story">
           <div className="about-story__content">
-            <span className="about-eyebrow">{about.aboutUs.eyebrow}</span>
-            <h2>{about.aboutUs.title}</h2>
+            <span className="about-eyebrow">{about.structure.eyebrow}</span>
+            <h2>{about.structure.title}</h2>
 
             <div className="about-copy about-copy--columns">
-              {about.aboutUs.paragraphs.map((paragraph) => (
+              {about.structure.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
 
             <div className="about-story__closing">
-              <strong>Nosso compromisso</strong>
-              <p>{about.aboutUs.closing}</p>
+              <strong>{about.care.eyebrow}</strong>
+              <p>{about.care.title}</p>
             </div>
           </div>
 
           <div className="about-story__side">
             <div className="about-story__media">
-              <img src={ownerImage} alt="Responsável pelo canil com um dos cães" />
+              <img src={aboutStoryImage} alt="Responsável pelo canil com um dos cães" />
             </div>
 
             <div className="about-story__note">
               <span className="about-story__note-label">Atendimento humano</span>
-              <p>
-                Cada família recebe orientação clara para entender o processo, tirar dúvidas e
-                tomar a decisão com segurança.
-              </p>
+              <p>{about.care.paragraphs[0]}</p>
             </div>
           </div>
         </div>
@@ -121,19 +100,16 @@ export default function Sobre() {
       <section className="about-cta">
         <div className="container about-cta__inner">
           <div>
-            <span className="about-eyebrow">Visite o canil</span>
-            <h2>Quer conhecer melhor nossa estrutura e atendimento?</h2>
-            <p>
-              Estamos prontos para apresentar o canil, esclarecer dúvidas e orientar você na
-              escolha do seu futuro companheiro.
-            </p>
+            <span className="about-eyebrow">{about.cta.eyebrow}</span>
+            <h2>{about.cta.title}</h2>
+            <p>{about.cta.description}</p>
           </div>
 
           <div className="about-cta__actions">
             <a href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noreferrer">
-              Chamar no WhatsApp
+              {about.cta.primaryButton.label}
             </a>
-            <Link to="/contato">Ir para contato</Link>
+            <Link to={about.cta.secondaryButton.path}>{about.cta.secondaryButton.label}</Link>
           </div>
         </div>
       </section>
